@@ -1,0 +1,8 @@
+            - name: Laravel Cloud Deploy
+  # You may pin to the exact commit or the version.
+  # uses: nhedger/laravel-cloud-deploy@ca557316aa8cf08fed0efdb740c0c093d4e423f7
+  uses: nhedger/laravel-cloud-deploy@v1.0.0
+  with:
+    # The webhook URL to trigger the deployment
+    webhook: 
+          
