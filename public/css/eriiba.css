@@ -1,0 +1,1320 @@
+﻿/* ============================================================
+   ERIIBA — design system
+   tokens + shared components (nav, btn, chip, cover, footer)
+   Совместимо с Tailwind CDN: Tailwind dark: использует .dark на <html>,
+   мы добавляем data-theme="light|dark|sepia" поверх.
+   ============================================================ */
+
+:root,
+[data-theme="light"] {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #f1f3f7;
+  --surface-3: #e7eaf0;
+  --surface-hover: #eef1f6;
+
+  --border: #e3e6ec;
+  --border-strong: #d5d9e1;
+
+  --text: #0f1419;
+  --text-2: #3a414b;
+  --text-3: #5b626d;
+  --text-muted: #8a909a;
+  --text-faint: #b1b6be;
+
+  --accent: #6c4ce0;
+  --accent-hover: #5a3bc4;
+  --accent-soft: #efe9ff;
+  --accent-text: #ffffff;
+  --accent-ring: rgba(108,76,224,0.18);
+
+  --tag-fantasy-bg: #eef0ff;   --tag-fantasy-fg: #4a52c9;
+  --tag-romance-bg: #ffeef3;   --tag-romance-fg: #c43a6a;
+  --tag-action-bg: #fff0e6;    --tag-action-fg: #c25315;
+  --tag-scifi-bg: #e6f4ff;     --tag-scifi-fg: #1f6fa8;
+  --tag-mystery-bg: #efeaf7;   --tag-mystery-fg: #6b3fa0;
+  --tag-slice-bg: #ecf6ec;     --tag-slice-fg: #3d7a3f;
+  --tag-horror-bg: #f3e6e6;    --tag-horror-fg: #8a2a2a;
+  --tag-litrpg-bg: #fff4d9;    --tag-litrpg-fg: #8a6310;
+
+  --ok: #2f9e5f;
+  --warn: #d8941b;
+  --err: #d83a3a;
+  --gold: #e0a83b;
+
+  --paper-bg: #ffffff;
+  --paper-text: #1a1d22;
+  --paper-text-2: #4a4f57;
+  --paper-rule: #ececec;
+
+  --shadow-xs: 0 1px 2px rgba(15,20,25,0.04);
+  --shadow-sm: 0 2px 6px rgba(15,20,25,0.06), 0 1px 2px rgba(15,20,25,0.04);
+  --shadow-md: 0 8px 24px rgba(15,20,25,0.08), 0 2px 6px rgba(15,20,25,0.04);
+  --shadow-lg: 0 18px 48px rgba(15,20,25,0.12), 0 6px 12px rgba(15,20,25,0.06);
+  --shadow-cover: 0 1px 2px rgba(15,20,25,0.08), 0 8px 18px rgba(15,20,25,0.14);
+  --shadow-cover-lg: 0 2px 4px rgba(15,20,25,0.08), 0 18px 38px rgba(15,20,25,0.18);
+
+  --display: "Fraunces", "Source Serif Pro", Georgia, serif;
+  --serif: "Source Serif Pro", "Newsreader", Georgia, serif;
+  --sans: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --r-xs: 5px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+}
+
+/* Tailwind dark class и data-theme="dark" — синхронизированы */
+.dark, [data-theme="dark"] {
+  --bg: #0e1116;
+  --surface: #161a21;
+  --surface-2: #1b2029;
+  --surface-3: #232936;
+  --surface-hover: #1f2530;
+
+  --border: #242a35;
+  --border-strong: #2f3645;
+
+  --text: #eef1f6;
+  --text-2: #c4c9d2;
+  --text-3: #989fab;
+  --text-muted: #6f7682;
+  --text-faint: #50565f;
+
+  --accent: #9b85ff;
+  --accent-hover: #ab98ff;
+  --accent-soft: #241a40;
+  --accent-text: #ffffff;
+  --accent-ring: rgba(155,133,255,0.25);
+
+  --tag-fantasy-bg: #232a4a;   --tag-fantasy-fg: #a8b2ff;
+  --tag-romance-bg: #3a1f2d;   --tag-romance-fg: #ff9bbf;
+  --tag-action-bg: #3b2418;    --tag-action-fg: #ffae7a;
+  --tag-scifi-bg: #122b3d;     --tag-scifi-fg: #8acff0;
+  --tag-mystery-bg: #2a1f3a;   --tag-mystery-fg: #c3a3e8;
+  --tag-slice-bg: #1c2e1f;     --tag-slice-fg: #95cf95;
+  --tag-horror-bg: #321b1b;    --tag-horror-fg: #e89494;
+  --tag-litrpg-bg: #2f2611;    --tag-litrpg-fg: #e8c46a;
+
+  --paper-bg: #161a21;
+  --paper-text: #dde2eb;
+  --paper-text-2: #a8aeb9;
+  --paper-rule: #232936;
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.4);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-lg: 0 18px 48px rgba(0,0,0,0.6);
+  --shadow-cover: 0 2px 4px rgba(0,0,0,0.5), 0 8px 18px rgba(0,0,0,0.55);
+  --shadow-cover-lg: 0 2px 4px rgba(0,0,0,0.5), 0 18px 38px rgba(0,0,0,0.7);
+}
+
+/* sepia — ТОЛЬКО в читалке. Применяется через [data-paper="sepia"] на корне читалки
+   (.reader-v1), чтобы не «утекало» на остальной сайт при выходе из читалки. */
+.reader-v1[data-paper="sepia"] {
+  --bg: #f4ecd8;
+  --surface: #fbf5e3;
+  --surface-2: #f0e7cf;
+  --surface-3: #e7dcc0;
+  --surface-hover: #efe6cd;
+
+  --border: #ddd2b6;
+  --border-strong: #c9bd9c;
+
+  --text: #2b2418;
+  --text-2: #4a3f2a;
+  --text-3: #6b5e44;
+  --text-muted: #8b7e62;
+  --text-faint: #b3a685;
+
+  --accent: #5a3a1a;
+  --accent-hover: #6f4a25;
+  --accent-soft: #ebdfc4;
+  --accent-text: #fbf5e3;
+  --accent-ring: rgba(90,58,26,0.25);
+
+  --paper-bg: #fbf5e3;
+  --paper-text: #2b2418;
+  --paper-text-2: #5a4a32;
+  --paper-rule: #ddd2b6;
+
+  background: var(--bg);
+}
+/* Совместимость: оставляем старый selector для случаев, когда sepia всё-таки на html */
+html[data-theme="sepia"] .reader-v1 {
+  --bg: #f4ecd8; --surface: #fbf5e3; --surface-2: #f0e7cf; --surface-3: #e7dcc0;
+  --border: #ddd2b6; --text: #2b2418; --text-2: #4a3f2a; --text-3: #6b5e44;
+  --text-muted: #8b7e62; --accent: #5a3a1a; --accent-soft: #ebdfc4;
+  --paper-bg: #fbf5e3; --paper-text: #2b2418; --paper-rule: #ddd2b6;
+}
+
+/* ============================================================
+   Базовые типографские утилиты
+   ============================================================ */
+.eriiba-display { font-family: var(--display); font-weight: 500; letter-spacing: -0.015em; }
+.eriiba-serif { font-family: var(--serif); }
+.eriiba-mono { font-family: var(--mono); }
+.eriiba-sans { font-family: var(--sans); }
+
+body.eriiba-body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--sans) !important;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   Top nav
+   ============================================================ */
+.eri-page { min-height: 100vh; background: var(--bg); }
+
+.eri-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.eri-nav-inner {
+  max-width: 1400px; margin: 0 auto;
+  padding: 0 clamp(22px, 3.3vw, 62px);
+  height: 64px;
+  display: flex; align-items: center; gap: 16px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.eri-logo {
+  display: flex; align-items: center; gap: 9px;
+  font-family: var(--display);
+  font-size: 22px; font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.eri-nav-links {
+  display: flex; gap: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-3);
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: visible;   /* было hidden — обрезало dropdown-меню */
+}
+.eri-nav-links a {
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.eri-nav-links a:hover { background: var(--surface-2); color: var(--text); }
+.eri-nav-links a.active { color: var(--accent); background: var(--accent-soft); }
+
+/* ── Dropdown nav ── */
+.eri-nav-dropdown { position: relative; }
+.eri-nav-drop-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  font-size: 14px; font-weight: 500;
+  color: var(--text-3);
+  background: none; border: 0; cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.eri-nav-drop-btn:hover { background: var(--surface-2); color: var(--text); }
+.eri-nav-drop-btn.active { color: var(--accent); background: var(--accent-soft); }
+.eri-nav-drop-caret {
+  font-size: 9px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: var(--text-faint);
+}
+.eri-nav-drop-caret.rotated { transform: rotate(180deg); color: var(--accent); }
+/* Меню — slide-down + fade.
+   top: 100% без зазора — gap делаем padding-top, чтобы мышь не «выпадала»
+   между кнопкой и меню при движении курсора вниз. */
+.eri-nav-drop-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  min-width: 260px;
+  padding: 14px 8px 8px;   /* padding-top = «мост» над рамкой меню */
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+/* Видимый блок меню — внутри через pseudo-element/wrapper */
+.eri-nav-drop-menu-inner {
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow:
+    0 2px 0 rgba(47,109,240,0.08),
+    0 16px 40px rgba(15,20,25,0.14),
+    0 4px 10px rgba(15,20,25,0.06);
+  padding: 8px;
+  position: relative;
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+}
+/* Стрелочка вверх — на inner */
+.eri-nav-drop-menu-inner::before {
+  content: "";
+  position: absolute;
+  top: -6px; left: 50%; transform: translateX(-50%);
+  width: 12px; height: 6px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: var(--border);
+}
+.eri-nav-drop-menu-inner::after {
+  content: "";
+  position: absolute;
+  top: -5px; left: 50%; transform: translateX(-50%);
+  width: 10px; height: 5px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+}
+.eri-nav-dropdown:hover .eri-nav-drop-menu,
+.eri-nav-drop-menu.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.eri-nav-drop-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.eri-nav-drop-item::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--accent-soft), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.eri-nav-drop-item:hover { background: var(--surface-2); transform: translateX(2px); }
+.eri-nav-drop-item:hover::before { opacity: 1; }
+.eri-nav-drop-item.active { background: var(--accent-soft); }
+.eri-nav-drop-item.active .eri-nav-drop-label { color: var(--accent); font-weight: 600; }
+.eri-nav-drop-item.active .eri-nav-drop-icon { background: var(--accent); color: var(--accent-text); box-shadow: 0 4px 10px rgba(47,109,240,0.35); }
+.eri-nav-drop-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 14px; flex-shrink: 0;
+  transition: all 0.15s;
+  box-shadow: 0 2px 6px rgba(47,109,240,0.15);
+}
+.eri-nav-drop-item:hover .eri-nav-drop-icon {
+  background: var(--accent); color: var(--accent-text);
+  box-shadow: 0 4px 10px rgba(47,109,240,0.35);
+}
+.eri-nav-drop-label { font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.2; }
+.eri-nav-drop-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.3; }
+/* Разделитель между пунктами */
+.eri-nav-drop-item + .eri-nav-drop-item {
+  margin-top: 2px;
+}
+@media (max-width: 1280px) {
+  .eri-nav-drop-btn { padding: 8px 10px; font-size: 13px; }
+}
+.eri-nav-right {
+  margin-left: auto;
+  display: flex; align-items: center; gap: 8px;
+  flex-shrink: 0;
+}
+.eri-search {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface-2);
+  border: 1px solid transparent;
+  border-radius: var(--r-pill);
+  padding: 8px 14px;
+  width: 240px;
+  min-width: 160px;
+  flex-shrink: 1;
+  color: var(--text-3);
+  font-size: 13px;
+  transition: border 0.15s, background 0.15s;
+}
+@media (max-width: 1280px) {
+  .eri-search { width: 180px; }
+  .eri-nav-links a { padding: 8px 10px; font-size: 13px; }
+  .eri-nav-inner { gap: 12px; }
+}
+@media (max-width: 1100px) {
+  .eri-search .kbd { display: none; }
+  .eri-search { width: 140px; }
+}
+.eri-search:focus-within { background: var(--surface); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-ring); }
+.eri-search input {
+  flex: 1; min-width: 0;
+  background: none; border: none; outline: none;
+  color: var(--text);
+  font-family: inherit; font-size: inherit;
+}
+.eri-search input::placeholder { color: var(--text-muted); }
+.eri-search .kbd {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  background: var(--surface);
+}
+.eri-icon-btn {
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  background: none; border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  color: var(--text-3);
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+}
+.eri-icon-btn:hover { background: var(--surface-2); color: var(--text); }
+.eri-icon-btn .badge-dot {
+  position: absolute; top: 6px; right: 6px;
+  width: 7px; height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+}
+.eri-icon-btn .badge-num {
+  position: absolute; top: 2px; right: 2px;
+  min-width: 16px; height: 16px;
+  padding: 0 4px;
+  font-family: var(--sans); font-weight: 700; font-size: 10px;
+  color: #fff;
+  background: var(--err);
+  border-radius: 999px;
+  display: grid; place-items: center;
+  border: 2px solid var(--surface);
+}
+.eri-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6ea1ff, #2f6df0);
+  display: grid; place-items: center;
+  color: #fff;
+  font-weight: 700; font-size: 12px;
+  font-family: var(--sans);
+  overflow: hidden;
+  text-decoration: none;
+}
+.eri-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Theme toggle */
+.eri-theme-toggle {
+  display: inline-flex;
+  background: var(--surface-2);
+  border-radius: var(--r-pill);
+  padding: 3px;
+}
+.eri-theme-toggle button {
+  width: 30px; height: 28px;
+  border: 0; background: transparent;
+  border-radius: var(--r-pill);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: grid; place-items: center;
+}
+.eri-theme-toggle button.on {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.eri-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: var(--r-pill);
+  font-size: 13px; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  text-decoration: none;
+}
+.eri-btn:hover { background: var(--surface-2); border-color: var(--border-strong); color: var(--text); }
+.eri-btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+.eri-btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--accent-text); }
+.eri-btn.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-3);
+}
+.eri-btn.ghost:hover { background: var(--surface-2); color: var(--text); }
+.eri-btn.danger {
+  background: var(--err); border-color: var(--err); color: #fff;
+}
+.eri-btn.danger:hover { filter: brightness(0.92); color: #fff; }
+.eri-btn.sm { padding: 7px 14px; font-size: 12px; }
+.eri-btn.lg { padding: 13px 24px; font-size: 14px; }
+.eri-btn.block { width: 100%; }
+
+/* ============================================================
+   Section
+   ============================================================ */
+.eri-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px clamp(22px, 3.3vw, 62px);
+}
+.eri-section.eri-section-wide,
+.eri-section-wide {
+  max-width: none;
+  padding-left: clamp(22px, 3.3vw, 70px);
+  padding-right: clamp(22px, 3.3vw, 70px);
+}
+.eri-section-head {
+  display: flex; align-items: baseline; gap: 14px;
+  margin-bottom: 20px;
+}
+.eri-section-head h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 26px; font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.eri-section-head .sub {
+  font-size: 13px;
+  color: var(--text-3);
+}
+.eri-section-head .more {
+  margin-left: auto;
+  font-size: 13px; color: var(--text-3);
+  font-weight: 500;
+  display: inline-flex; align-items: center; gap: 4px;
+  text-decoration: none;
+}
+.eri-section-head .more:hover { color: var(--accent); }
+
+/* ============================================================
+   Cover
+   ============================================================ */
+.eri-cover {
+  aspect-ratio: 2 / 3;
+  background: var(--surface-3);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-cover);
+  display: block;
+  isolation: isolate;
+}
+.eri-cover img, .eri-cover svg { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+/* ── Glass effect: диагональный блик + внутренний highlight + нижняя дымка ──
+   Без mix-blend-mode (на ярких обложках он растворяется в цвете).
+   Чистые полупрозрачные слои поверх — работают на любом фоне. */
+.eri-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,0.38) 0%,
+      rgba(255,255,255,0.16) 18%,
+      rgba(255,255,255,0.04) 35%,
+      rgba(255,255,255,0)    52%,
+      rgba(0,0,0,0)          70%,
+      rgba(0,0,0,0.22)       100%);
+  z-index: 1;
+}
+.eri-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 0 0 1px rgba(255,255,255,0.10),
+    inset 0 -50px 60px -40px rgba(0,0,0,0.55);
+  z-index: 1;
+}
+[data-theme="dark"] .eri-cover::before {
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,0.28) 0%,
+      rgba(255,255,255,0.10) 20%,
+      rgba(255,255,255,0)    45%,
+      rgba(0,0,0,0)          68%,
+      rgba(0,0,0,0.30)       100%);
+}
+
+.eri-cover .badge-rank {
+  position: absolute; top: 8px; left: 8px;
+  background: rgba(15,20,25,0.78);
+  color: #fff;
+  font-family: var(--display);
+  font-weight: 600; font-size: 13px;
+  padding: 3px 8px;
+  border-radius: var(--r-xs);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 3;
+}
+.eri-cover .badge-rank.gold { background: linear-gradient(135deg, #f7c14a, #d99416); color: #2b1f00; }
+.eri-cover .badge-lock {
+  position: absolute; top: 8px; right: 8px;
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  background: rgba(217, 148, 22, 0.92);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 11px;
+  z-index: 3;
+}
+.eri-cover .badge-status {
+  position: absolute; bottom: 8px; left: 8px;
+  font-family: var(--sans);
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(15,20,25,0.7);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: var(--r-pill);
+  z-index: 3;
+}
+
+/* ============================================================
+   Chips (genre)
+   ============================================================ */
+.eri-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--r-pill);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+.eri-chip.fantasy { background: var(--tag-fantasy-bg); color: var(--tag-fantasy-fg); }
+.eri-chip.romance { background: var(--tag-romance-bg); color: var(--tag-romance-fg); }
+.eri-chip.action  { background: var(--tag-action-bg); color: var(--tag-action-fg); }
+.eri-chip.scifi   { background: var(--tag-scifi-bg); color: var(--tag-scifi-fg); }
+.eri-chip.mystery { background: var(--tag-mystery-bg); color: var(--tag-mystery-fg); }
+.eri-chip.slice   { background: var(--tag-slice-bg); color: var(--tag-slice-fg); }
+.eri-chip.horror  { background: var(--tag-horror-bg); color: var(--tag-horror-fg); }
+.eri-chip.litrpg  { background: var(--tag-litrpg-bg); color: var(--tag-litrpg-fg); }
+.eri-chip.accent  { background: var(--accent-soft); color: var(--accent); }
+.eri-chip.warn    { background: var(--tag-litrpg-bg); color: var(--tag-litrpg-fg); }
+.eri-chip.danger  { background: var(--tag-horror-bg); color: var(--tag-horror-fg); }
+.eri-chip.lg { padding: 5px 12px; font-size: 12px; }
+
+/* Stat row */
+.eri-stat {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.eri-stat svg, .eri-stat i { color: var(--text-muted); }
+
+.eri-stars { display: inline-flex; align-items: center; gap: 3px; color: var(--gold); }
+.eri-stars svg, .eri-stars i { width: 14px; height: 14px; font-size: 14px; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.eri-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 40px 36px 32px;
+  margin-top: 64px;
+}
+.eri-footer-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 32px;
+}
+@media (max-width: 768px) {
+  .eri-footer { padding: 28px 18px 20px; }
+  .eri-footer-inner { grid-template-columns: 1fr 1fr !important; gap: 24px; }
+  .eri-footer-inner > div:first-child { grid-column: 1 / -1; }
+  .eri-footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+}
+.eri-footer h4 {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin: 0 0 14px;
+}
+.eri-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.eri-footer a { font-size: 13px; color: var(--text-2); text-decoration: none; }
+.eri-footer a:hover { color: var(--accent); }
+.eri-footer-bottom {
+  max-width: 1400px; margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--text-muted);
+}
+
+/* ============================================================
+   Cards / lists / utilities
+   ============================================================ */
+.eri-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 20px;
+}
+.eri-card-pad-lg { padding: 28px; }
+
+.eri-grid-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+.eri-novel-card {
+  display: block;
+  transition: transform 0.18s;
+  text-decoration: none;
+  color: inherit;
+}
+.eri-novel-card:hover { transform: translateY(-3px); }
+.eri-novel-card .eri-cover { margin-bottom: 12px; transition: box-shadow 0.18s; }
+.eri-novel-card:hover .eri-cover { box-shadow: var(--shadow-cover-lg); }
+.eri-novel-card-body { padding: 0 2px; }
+.eri-novel-card-title {
+  font-family: var(--display);
+  font-size: 16px; font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.eri-novel-card-author { font-size: 12px; color: var(--text-3); margin-bottom: 8px; }
+.eri-novel-card-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.eri-novel-card-rating { font-size: 12px; font-weight: 600; color: var(--text-2); }
+
+@media (max-width: 1280px) { .eri-grid-row { grid-template-columns: repeat(5, 1fr); } }
+@media (max-width: 1024px) { .eri-grid-row { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 768px) { .eri-grid-row { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
+@media (max-width: 480px) { .eri-grid-row { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+/* Tabs */
+.eri-tabs {
+  display: flex; gap: 4px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.eri-tab {
+  background: none; border: 0;
+  padding: 10px 14px;
+  font-size: 13px; font-weight: 600;
+  color: var(--text-3);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  text-decoration: none;
+  font-family: inherit;
+}
+.eri-tab.on { color: var(--accent); border-color: var(--accent); }
+.eri-tab:hover:not(.on) { color: var(--text); }
+
+/* Forms */
+.eri-input, .eri-textarea, .eri-select,
+input.eri-input, textarea.eri-textarea, select.eri-select {
+  /* !important — нужно перебивать @tailwindcss/forms (CDN), который инжектит
+     `background-color:#fff` через элементный селектор после нашего CSS. */
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--border) !important;
+  background-color: var(--surface) !important;
+  background-image: none;
+  background-repeat: no-repeat;
+  color: var(--text) !important;
+  font-family: inherit;
+  font-size: 14px;
+  border-radius: var(--r-sm);
+  transition: border 0.15s, box-shadow 0.15s;
+}
+.eri-input::placeholder, .eri-textarea::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 1;
+}
+/* В тёмной теме инпуты тоже тёмные — сильное правило, чтобы tailwind-forms точно не перебил */
+[data-theme="dark"] .eri-input,
+[data-theme="dark"] .eri-textarea,
+[data-theme="dark"] .eri-select,
+.dark .eri-input, .dark .eri-textarea, .dark .eri-select {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+/* Перебиваем @tailwindcss/forms: его background-image-стрелка повторялась
+   из-за нашего background:shorthand. Возвращаем одну корректную SVG-стрелку. */
+select.eri-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%238a909a' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+}
+[data-theme="dark"] select.eri-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23989fab' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+}
+.eri-input:focus, .eri-textarea:focus, .eri-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-ring);
+}
+.eri-input::placeholder, .eri-textarea::placeholder { color: var(--text-muted); }
+.eri-label {
+  display: block;
+  font-size: 12px; font-weight: 600;
+  color: var(--text-2);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.eri-help {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 4px;
+}
+.eri-error {
+  font-size: 12px;
+  color: var(--err);
+  margin-top: 4px;
+}
+.eri-checkbox {
+  appearance: none;
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 4px;
+  cursor: pointer;
+  display: grid; place-items: center;
+  flex: none;
+}
+.eri-checkbox:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.eri-checkbox:checked::after {
+  content: "";
+  width: 5px; height: 10px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+/* ============================================================
+   Modals — универсальный центрированный диалог
+   ============================================================ */
+.eri-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1000;
+  background: rgba(0,0,0,0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px;
+}
+/* x-show ставит inline display:none, при показе откатывает на дефолт элемента — без !important
+   inline display:flex может потеряться. Класс с !important решает это раз и навсегда. */
+.eri-modal-overlay[style*="display: none"] { display: none !important; }
+.eri-modal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  width: 100%; max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 24px;
+}
+.eri-modal.lg { max-width: 720px; }
+.eri-modal.xl { max-width: 960px; }
+.eri-modal-head {
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px; margin-bottom: 16px;
+}
+.eri-modal-title {
+  font-family: var(--display); font-size: 18px; font-weight: 500;
+  color: var(--text); margin: 0;
+}
+.eri-modal-close {
+  background: none; border: 0;
+  font-size: 24px; line-height: 1;
+  color: var(--text-3); cursor: pointer;
+  padding: 0 4px;
+}
+.eri-modal-close:hover { color: var(--text); }
+
+/* ============================================================
+   Chapter list row (manager) — железобетонная сетка
+   ============================================================ */
+.eri-chrow {
+  display: grid !important;
+  grid-template-columns: 18px 14px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 12px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  user-select: none;
+  transition: background 0.1s;
+  border-radius: var(--r-sm);
+}
+.eri-chrow > * { min-width: 0; }
+.eri-chrow .eri-chrow-title {
+  display: flex; align-items: center; gap: 6px;
+  min-width: 0; overflow: hidden;
+  text-decoration: none; color: var(--text);
+  font-size: 13px; font-weight: 500;
+}
+.eri-chrow .eri-chrow-title > span:first-child {
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;
+}
+.eri-chrow .eri-chrow-actions {
+  display: flex !important; align-items: center; gap: 2px;
+  flex-shrink: 0; flex-wrap: nowrap;
+}
+.eri-chrow .eri-chrow-actions .eri-btn {
+  padding: 4px 6px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Адаптив TOP-NAV: hamburger / search overlay / drawer
+   ============================================================ */
+.eri-burger { display: none; }
+.eri-show-mobile { display: none; }
+.eri-search-mobile-btn { display: none; }
+
+@media (max-width: 1024px) {
+  .eri-burger { display: grid; }
+  .eri-nav-links-desktop { display: none; }
+  .eri-search-desktop { display: none; }
+  .eri-search-mobile-btn { display: grid; }
+  .eri-show-mobile { display: grid; }
+  .eri-hide-mobile { display: none !important; }
+  .eri-nav-inner { padding: 0 14px; height: 56px; gap: 8px; }
+  .eri-logo { font-size: 18px; }
+  .eri-nav-right { gap: 4px; }
+}
+@media (max-width: 480px) {
+  .eri-logo-text { display: none; }
+  .eri-section { padding: 16px 12px; }
+}
+
+/* ── DRAWER ── */
+.eri-drawer-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  display: flex;
+}
+.eri-drawer {
+  width: 88vw; max-width: 360px; height: 100vh;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  padding: 16px;
+  box-shadow: var(--shadow-lg);
+}
+.eri-drawer-enter        { transition: transform 0.25s ease, opacity 0.2s ease; }
+.eri-drawer-enter-start  { transform: translateX(-100%); opacity: 0; }
+.eri-drawer-enter-end    { transform: translateX(0);    opacity: 1; }
+.eri-drawer-leave        { transition: transform 0.2s ease, opacity 0.15s ease; }
+.eri-drawer-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-bottom: 14px; border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.eri-drawer-user {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: var(--r-md);
+  text-decoration: none; color: inherit;
+  margin-bottom: 16px;
+}
+.eri-drawer-auth {
+  display: grid; gap: 8px; margin-bottom: 16px;
+}
+.eri-drawer-section-title {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 700;
+  margin: 18px 0 6px;
+}
+/* Подзаголовок группы в drawer (Читать / Сообщество) */
+.eri-drawer-group-label {
+  font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); font-weight: 700;
+  margin: 14px 0 4px;
+  padding: 0 2px;
+  display: flex; align-items: center; gap: 6px;
+}
+.eri-drawer-group-label::after {
+  content: "";
+  flex: 1; height: 1px;
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.eri-drawer-nav { display: grid; gap: 2px; }
+.eri-drawer-nav a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  color: var(--text-2);
+  font-size: 14px; font-weight: 500;
+}
+.eri-drawer-nav a i { width: 18px; text-align: center; color: var(--text-3); font-size: 14px; }
+.eri-drawer-nav a:hover { background: var(--surface-2); color: var(--text); }
+.eri-drawer-nav a.active {
+  background: var(--accent-soft); color: var(--accent); font-weight: 600;
+}
+.eri-drawer-nav a.active i { color: var(--accent); }
+.eri-drawer-themes {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+}
+.eri-drawer-themes button {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--r-sm);
+  color: var(--text-2);
+  font-size: 13px; font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.eri-drawer-themes button.on {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.eri-drawer-logout {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── SEARCH OVERLAY ── */
+.eri-search-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.55);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 80px 16px 16px;
+}
+.eri-search-overlay-form {
+  width: 100%; max-width: 600px;
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 8px 8px 8px 18px;
+  box-shadow: var(--shadow-lg);
+}
+.eri-search-overlay-form > i { color: var(--text-muted); }
+.eri-search-overlay-form input {
+  flex: 1; min-width: 0;
+  background: none; border: 0; outline: none;
+  font-family: inherit; font-size: 16px;
+  color: var(--text); padding: 8px 0;
+}
+.eri-search-overlay-form input::placeholder { color: var(--text-muted); }
+
+/* ============================================================
+   Threaded comments (Novelpia-style)
+   ============================================================ */
+.eri-comments .comment-list { display: grid; gap: 0; }
+.eri-comments .comment-replies { display: grid; gap: 0; margin-top: 0; }
+.eri-comments .comment-card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: 18px 4px 16px;
+}
+.eri-comments .comment-replies > .comment-item:last-child .comment-card,
+.eri-comments .comment-list > .comment-item:last-child .comment-card {
+  border-bottom: 0;
+}
+.eri-comments .comment-card-head {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 12px;
+}
+.eri-comments .comment-avatar-wrap { flex: none; display: block; }
+.eri-comments .comment-avatar {
+  border-radius: 50%; object-fit: cover;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.eri-comments .comment-head-body { flex: 1; min-width: 0; padding-top: 2px; }
+.eri-comments .comment-name {
+  font-weight: 700; color: var(--text); font-size: 15px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.eri-comments .comment-name-link {
+  color: inherit; text-decoration: none;
+}
+.eri-comments .comment-name-link:hover { color: var(--accent); }
+.eri-comments .comment-meta-row {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 12px; color: var(--text-muted);
+  flex-wrap: wrap;
+}
+.eri-comments .comment-time {
+  font-family: var(--mono); letter-spacing: 0.01em;
+}
+.eri-comments .comment-chapter-ref {
+  display: inline-flex; align-items: center; gap: 5px;
+  color: var(--text-3);
+  text-decoration: none;
+  font-weight: 500;
+}
+.eri-comments .comment-chapter-ref:hover { color: var(--accent); }
+.eri-comments .comment-badge {
+  font-family: var(--sans); font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 2px 7px; border-radius: var(--r-pill);
+  background: var(--accent-soft); color: var(--accent);
+}
+.eri-comments .comment-badge.author {
+  background: var(--accent); color: var(--accent-text);
+}
+.eri-comments .comment-body {
+  font-family: var(--serif); font-size: 15px; line-height: 1.6;
+  color: var(--text); white-space: pre-wrap; word-wrap: break-word;
+  padding-left: 60px;
+}
+.eri-comments .comment-replies .comment-body { padding-left: 48px; }
+.eri-comments .comment-body p { margin: 0 0 0.6em; }
+.eri-comments .comment-body p:last-child { margin-bottom: 0; }
+.eri-comments .comment-body img:not(.eri-sticker) {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 6px 0;
+}
+
+.eri-comments .comment-actions {
+  display: flex; gap: 18px; align-items: center;
+  margin-top: 12px;
+  padding-left: 60px;
+  flex-wrap: wrap;
+}
+.eri-comments .comment-replies .comment-actions { padding-left: 48px; }
+.eri-comments .comment-actions-right {
+  display: flex; gap: 18px; align-items: center;
+  margin-left: auto;
+}
+.eri-comments .comment-action {
+  background: none; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: inherit; font-size: 12.5px; font-weight: 600;
+  color: var(--text-muted);
+  padding: 4px 0;
+  transition: color .15s;
+}
+.eri-comments .comment-action:hover { color: var(--accent); }
+.eri-comments .comment-action i { font-size: 13px; }
+.eri-comments .comment-action.on { color: var(--accent); }
+.eri-comments .comment-action-recommend.on { color: var(--accent); }
+.eri-comments .comment-action-like.on { color: var(--err); }
+.eri-comments .comment-action-replies {
+  color: var(--text-2);
+}
+.eri-comments .comment-action-replies i { font-size: 10px; transition: transform .15s; }
+.eri-comments .comment-action-report { color: var(--text-muted); }
+.eri-comments .comment-action-report:hover { color: var(--err); }
+
+/* Сортировка комментариев */
+.eri-comments .comments-sort-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 8px; padding: 8px 0;
+  border-bottom: 2px solid var(--border);
+  flex-wrap: wrap;
+}
+.eri-comments .comments-count {
+  font-size: 14px; color: var(--text-2); font-weight: 500;
+}
+.eri-comments .comments-count strong { color: var(--accent); font-weight: 700; }
+.eri-comments .comments-sort-options { display: flex; gap: 4px; align-items: center; }
+.eri-comments .comments-sort-btn {
+  background: none; border: 0; cursor: pointer;
+  font-family: inherit; font-size: 13px; font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 10px; border-radius: var(--r-sm);
+  display: inline-flex; align-items: center; gap: 5px;
+  transition: color .15s, background .15s;
+}
+.eri-comments .comments-sort-btn i { font-size: 5px; color: var(--text-muted); }
+.eri-comments .comments-sort-btn:hover { color: var(--text); }
+.eri-comments .comments-sort-btn.on { color: var(--text); font-weight: 700; }
+.eri-comments .comments-sort-btn.on i { color: var(--accent); }
+@media (max-width: 600px) {
+  .eri-comments .comments-sort-bar { gap: 6px; }
+  .eri-comments .comments-sort-btn { padding: 6px 6px; font-size: 12px; }
+}
+
+/* Стикеры внутри тела комментария */
+.eri-comments .comment-body .eri-sticker {
+  display: inline-block;
+  width: 80px; height: 80px;
+  vertical-align: middle;
+  margin: 2px 4px;
+  object-fit: contain;
+}
+.eri-sticker-picker {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+}
+.eri-comments .comment-reply-form {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+/* Уровни вложенности — отступ и тонкая боковая полоса */
+.eri-comments .comment-item { position: relative; }
+.eri-comments .comment-replies > .comment-item { position: relative; }
+.eri-comments .comment-replies > .comment-item::before {
+  content: ""; position: absolute;
+  left: -14px; top: 18px; bottom: 18px;
+  width: 2px; background: var(--border);
+}
+
+@media (max-width: 600px) {
+  .eri-comments .comment-item { margin-left: 0 !important; }
+  .eri-comments .comment-replies > .comment-item { margin-left: 14px !important; }
+  .eri-comments .comment-body,
+  .eri-comments .comment-actions { padding-left: 48px !important; }
+  .eri-comments .comment-replies .comment-body,
+  .eri-comments .comment-replies .comment-actions { padding-left: 0 !important; }
+  .eri-comments .comment-actions { gap: 12px; }
+  .eri-comments .comment-actions-right { gap: 12px; }
+  .eri-comments .comment-action span { display: none; }
+  .eri-comments .comment-action-replies span,
+  .eri-comments .comment-action-reply span { display: inline; }
+}
+
+/* ── Mobile bottom-nav (фиксирован, поверх контента) ── */
+.eri-bottom-nav {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 55;
+  background: color-mix(in srgb, var(--surface) 95%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border);
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 4px);
+  display: none;
+}
+.eri-bottom-nav-row {
+  display: flex; justify-content: space-around; align-items: end;
+  height: 56px; padding: 4px 4px 0;
+  max-width: 600px; margin: 0 auto;
+}
+.eri-bottom-nav-row a {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 4px;
+  color: var(--text-3);
+  font-size: 9px; font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+}
+.eri-bottom-nav-row a.active { color: var(--accent); }
+.eri-bottom-nav-row a i { font-size: 16px; }
+.eri-bottom-nav-row .center {
+  position: relative; margin-top: -16px;
+}
+.eri-bottom-nav-row .center .dot {
+  width: 46px; height: 46px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 14px;
+  display: grid; place-items: center;
+  border: 3px solid var(--surface);
+  box-shadow: 0 6px 18px var(--accent-ring);
+}
+.eri-bottom-nav-row .center .dot i { font-size: 18px; color: #fff; }
+.eri-bottom-nav-row .center span { color: var(--accent); margin-top: 4px; }
+
+/* Universal page wrap */
+@media (max-width: 1024px) {
+  .eri-section { padding: 18px 14px; }
+  .eri-bottom-nav { display: block; }
+  /* Резерв снизу под нижнюю нав */
+  html.no-reader body {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Anti-tailwind reset for body in eriiba mode */
+html.eriiba-html, html.eriiba-html body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Generic flex helpers (минимальный набор, чтобы не тащить лишнего) */
+.eri-row { display: flex; align-items: center; gap: 10px; }
+.eri-col { display: flex; flex-direction: column; gap: 10px; }
+.eri-spacer { flex: 1; }
+.eri-mt-2 { margin-top: 8px; } .eri-mt-3 { margin-top: 12px; } .eri-mt-4 { margin-top: 16px; }
+.eri-mb-2 { margin-bottom: 8px; } .eri-mb-3 { margin-bottom: 12px; } .eri-mb-4 { margin-bottom: 16px; }
+.eri-text-muted { color: var(--text-muted); }
+.eri-text-3 { color: var(--text-3); }
+.eri-text-accent { color: var(--accent); }
+.eri-text-ok { color: var(--ok); }
+.eri-text-warn { color: var(--warn); }
+.eri-text-err { color: var(--err); }
+
+/* Alerts */
+.eri-alert {
+  padding: 12px 16px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 13px;
+  color: var(--text-2);
+}
+.eri-alert.ok { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 8%, var(--surface)); color: var(--ok); }
+.eri-alert.warn { border-color: var(--warn); background: color-mix(in srgb, var(--warn) 8%, var(--surface)); color: var(--warn); }
+.eri-alert.err { border-color: var(--err); background: color-mix(in srgb, var(--err) 8%, var(--surface)); color: var(--err); }

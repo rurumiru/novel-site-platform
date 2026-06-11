@@ -1,0 +1,9 @@
+/* Inter */
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; src: local('Inter Regular'), local('Inter-Regular'), url('../fonts/Inter-Regular.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; src: local('Inter Bold'), local('Inter-Bold'), url('../fonts/Inter-Bold.woff2') format('woff2'); font-display: swap; }
+
+/* Merriweather */
+@font-face { font-family: 'Merriweather'; font-style: normal; font-weight: 400; src: local('Merriweather Regular'), local('Merriweather-Regular'), url('../fonts/Merriweather-Regular.woff2') format('woff2'); font-display: swap; }
+
+/* Lora (Новый для чтения) */
+@font-face { font-family: 'Lora'; font-style: normal; font-weight: 400; src: local('Lora Regular'), local('Lora-Regular'), url('../fonts/Lora-Regular.woff2') format('woff2'); font-display: swap; }

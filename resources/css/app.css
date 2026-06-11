@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.chapter-content figcaption,
+.chapter-content .attachment__caption,
+figcaption,
+.attachment__caption,
+.attachment__name,
+.attachment__size,
+.trix-content .attachment__caption,
+.trix-content figcaption,
+.fi-fo-rich-editor figcaption,
+.fi-fo-rich-editor .attachment__caption,
+.fi-fo-rich-editor .attachment__name,
+.fi-fo-rich-editor .attachment__size {
+    display: none !important;
+}

@@ -1,0 +1,551 @@
+/* ============================================================
+   ERIIBA ADMIN v2 — TOP-NAV LAYOUT + BLOBS
+   Полностью убран левый sidebar — навигация переехала наверх.
+   Дашборд — блобы, цветные карточки, плавающие тени, hover-glow.
+   ============================================================ */
+
+:root {
+  --eri-glass: color-mix(in srgb, var(--eri-surface) 86%, transparent);
+  --eri-shadow-card: 0 4px 14px rgba(15,20,25,0.05), 0 1px 3px rgba(15,20,25,0.04);
+  --eri-shadow-hover: 0 14px 40px rgba(47,109,240,0.18), 0 4px 12px rgba(15,20,25,0.06);
+  --eri-r-card: 16px;
+  --eri-r-blob: 24px;
+  --eri-grad-accent: linear-gradient(135deg, #2f6df0 0%, #5b8def 100%);
+  --eri-grad-warm:   linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  --eri-grad-pink:   linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+  --eri-grad-purple: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  --eri-grad-teal:   linear-gradient(135deg, #14b8a6 0%, #2dd4bf 100%);
+  --eri-grad-danger: linear-gradient(135deg, #d83a3a 0%, #f87171 100%);
+  --eri-grad-success:linear-gradient(135deg, #2f9e5f 0%, #4ade80 100%);
+}
+.dark {
+  --eri-glass: color-mix(in srgb, var(--eri-surface) 75%, transparent);
+  --eri-shadow-card: 0 4px 14px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.25);
+  --eri-shadow-hover: 0 14px 40px rgba(91,141,239,0.22), 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   ANIMATED BLOB BACKGROUND
+   ============================================================ */
+.fi-body, body.fi-body {
+  background: var(--eri-bg) !important;
+  position: relative;
+}
+.fi-body::before {
+  content: "";
+  position: fixed; inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(closest-side at 12% 18%, rgba(47,109,240,0.18), transparent 70%),
+    radial-gradient(closest-side at 88% 12%, rgba(245,158,11,0.14), transparent 70%),
+    radial-gradient(closest-side at 50% 88%, rgba(139,92,246,0.14), transparent 70%),
+    radial-gradient(closest-side at 92% 78%, rgba(20,184,166,0.12), transparent 70%);
+  filter: blur(60px) saturate(1.2);
+  animation: blobFloat 24s ease-in-out infinite;
+}
+.dark .fi-body::before {
+  background:
+    radial-gradient(closest-side at 12% 18%, rgba(47,109,240,0.28), transparent 70%),
+    radial-gradient(closest-side at 88% 12%, rgba(245,158,11,0.22), transparent 70%),
+    radial-gradient(closest-side at 50% 88%, rgba(139,92,246,0.24), transparent 70%),
+    radial-gradient(closest-side at 92% 78%, rgba(20,184,166,0.20), transparent 70%);
+}
+@keyframes blobFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(20px, -30px) scale(1.08); }
+  66%      { transform: translate(-15px, 25px) scale(0.96); }
+}
+
+.fi-main, .fi-page { position: relative; z-index: 1; }
+
+/* ============================================================
+   TOP NAVIGATION (заменяет sidebar)
+   ============================================================ */
+.fi-topbar {
+  background: var(--eri-glass) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--eri-border) !important;
+  box-shadow: 0 2px 14px rgba(15,20,25,0.04) !important;
+}
+.fi-topbar nav {
+  padding: 12px 28px !important;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Брендированный логотип в топбаре */
+.fi-logo {
+  font-family: var(--eri-display) !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--eri-text) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.fi-logo::before {
+  content: "e";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  background: var(--eri-grad-accent);
+  color: #fff;
+  border-radius: 9px;
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.04em;
+  box-shadow: 0 6px 18px rgba(47,109,240,0.4);
+}
+
+/* ── Top-nav пункты ── */
+.fi-topbar-item-button,
+.fi-topbar-nav-item-button,
+.fi-topbar nav a,
+.fi-topbar nav button[role="menuitem"] {
+  border-radius: 10px !important;
+  padding: 8px 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: var(--eri-text-3) !important;
+  transition: all 0.15s !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.fi-topbar-item-button:hover,
+.fi-topbar-nav-item-button:hover {
+  background: var(--eri-surface-2) !important;
+  color: var(--eri-text) !important;
+}
+.fi-topbar-item.fi-active .fi-topbar-item-button,
+.fi-topbar-nav-item.fi-active .fi-topbar-nav-item-button,
+.fi-topbar [aria-current="page"] {
+  background: var(--eri-accent-soft) !important;
+  color: var(--eri-accent) !important;
+  font-weight: 600 !important;
+}
+
+/* Главное меню — горизонтально, разнесено */
+.fi-topbar-nav {
+  display: flex !important;
+  gap: 4px !important;
+  flex: 1;
+  justify-content: center !important;
+  flex-wrap: wrap;
+}
+
+/* Страховка: если sidebar всё-таки рендерится — прячем */
+.fi-sidebar { display: none !important; }
+.fi-main { padding-left: 0 !important; max-width: 1600px !important; margin: 0 auto !important; }
+
+/* ============================================================
+   PAGE / CONTAINER
+   ============================================================ */
+.fi-page {
+  padding: 28px 32px !important;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) { .fi-page { padding: 16px 14px !important; } }
+
+.fi-header { margin-bottom: 26px !important; padding-bottom: 18px !important; border-bottom: 1px solid var(--eri-border); }
+.fi-page-heading,
+h1.fi-header-heading {
+  font-family: var(--eri-display) !important;
+  font-size: clamp(26px, 3.4vw, 38px) !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.025em !important;
+  color: var(--eri-text) !important;
+  line-height: 1.05 !important;
+}
+.fi-page-subheading {
+  color: var(--eri-text-muted) !important;
+  font-size: 14px !important;
+  margin-top: 6px !important;
+}
+
+/* ============================================================
+   BLOB CARDS — для секций / виджетов
+   ============================================================ */
+.fi-section,
+.fi-wi-stats-overview-stat {
+  background: var(--eri-surface) !important;
+  border: 1px solid var(--eri-border) !important;
+  border-radius: var(--eri-r-card) !important;
+  box-shadow: var(--eri-shadow-card) !important;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.fi-section::after,
+.fi-wi-stats-overview-stat::after {
+  content: "";
+  position: absolute;
+  top: -50%; right: -30%;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(47,109,240,0.10), transparent 65%);
+  filter: blur(20px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.fi-section:hover,
+.fi-wi-stats-overview-stat:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--eri-accent) 40%, var(--eri-border)) !important;
+  box-shadow: var(--eri-shadow-hover) !important;
+}
+.fi-section:hover::after,
+.fi-wi-stats-overview-stat:hover::after {
+  opacity: 1;
+}
+
+/* ── STAT CARDS — большие, цветные ── */
+.fi-wi-stats-overview-stat {
+  padding: 22px 24px !important;
+  cursor: default;
+}
+.fi-wi-stats-overview-stat::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, transparent 60%, color-mix(in srgb, var(--eri-accent) 8%, transparent));
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.fi-wi-stats-overview-stat:hover::before { opacity: 1; }
+
+/* Иконка-блоб у каждой карточки (если есть) */
+.fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-icon {
+  position: absolute;
+  top: 18px; right: 18px;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 14px;
+  background: var(--eri-grad-accent);
+  color: #fff;
+  font-size: 20px;
+  box-shadow: 0 8px 20px rgba(47,109,240,0.35);
+}
+
+/* Цветовые акценты по типу stat */
+.fi-wi-stats-overview-stat.fi-color-success .fi-wi-stats-overview-stat-icon { background: var(--eri-grad-success); box-shadow: 0 8px 20px rgba(47,158,95,0.35); }
+.fi-wi-stats-overview-stat.fi-color-warning .fi-wi-stats-overview-stat-icon { background: var(--eri-grad-warm);    box-shadow: 0 8px 20px rgba(245,158,11,0.35); }
+.fi-wi-stats-overview-stat.fi-color-danger  .fi-wi-stats-overview-stat-icon { background: var(--eri-grad-danger);  box-shadow: 0 8px 20px rgba(216,58,58,0.35); }
+.fi-wi-stats-overview-stat.fi-color-info    .fi-wi-stats-overview-stat-icon { background: var(--eri-grad-teal);    box-shadow: 0 8px 20px rgba(20,184,166,0.35); }
+
+/* Чередование цветов для виджетов в ряду — даже без -success/-info */
+.fi-wi-stats-overview > .grid > div:nth-child(1) .fi-wi-stats-overview-stat::before { background: linear-gradient(135deg, transparent 55%, rgba(47,109,240,0.16)); }
+.fi-wi-stats-overview > .grid > div:nth-child(2) .fi-wi-stats-overview-stat::before { background: linear-gradient(135deg, transparent 55%, rgba(245,158,11,0.16)); }
+.fi-wi-stats-overview > .grid > div:nth-child(3) .fi-wi-stats-overview-stat::before { background: linear-gradient(135deg, transparent 55%, rgba(139,92,246,0.16)); }
+.fi-wi-stats-overview > .grid > div:nth-child(4) .fi-wi-stats-overview-stat::before { background: linear-gradient(135deg, transparent 55%, rgba(20,184,166,0.16)); }
+.fi-wi-stats-overview > .grid > div:nth-child(5) .fi-wi-stats-overview-stat::before { background: linear-gradient(135deg, transparent 55%, rgba(236,72,153,0.16)); }
+.fi-wi-stats-overview > .grid > div:nth-child(6) .fi-wi-stats-overview-stat::before { background: linear-gradient(135deg, transparent 55%, rgba(47,158,95,0.16)); }
+
+.fi-wi-stats-overview-stat-label {
+  font-family: var(--eri-sans) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--eri-text-muted) !important;
+}
+.fi-wi-stats-overview-stat-value {
+  font-family: var(--eri-display) !important;
+  font-size: 38px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.03em !important;
+  color: var(--eri-text) !important;
+  margin: 6px 0 !important;
+  line-height: 1 !important;
+}
+.fi-wi-stats-overview-stat-description {
+  font-size: 12px !important;
+  color: var(--eri-text-3) !important;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   SECTIONS / FORMS
+   ============================================================ */
+.fi-section-header {
+  padding: 20px 24px !important;
+  border-bottom: 1px solid var(--eri-border);
+}
+.fi-section-header-heading {
+  font-family: var(--eri-display) !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.015em !important;
+}
+.fi-section-content { padding: 22px 24px !important; }
+
+.fi-input,
+input.fi-input,
+textarea.fi-input,
+select.fi-input,
+.fi-input-wrp {
+  background: var(--eri-surface) !important;
+  border: 1px solid var(--eri-border) !important;
+  border-radius: 10px !important;
+  font-size: 13.5px !important;
+  transition: all 0.15s !important;
+}
+.fi-input:focus,
+.fi-input-wrp:focus-within {
+  border-color: var(--eri-accent) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--eri-accent) 18%, transparent) !important;
+  outline: none !important;
+}
+.fi-fo-field-wrp-label {
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  color: var(--eri-text-2) !important;
+  margin-bottom: 6px !important;
+}
+
+/* ============================================================
+   TABLES
+   ============================================================ */
+.fi-ta {
+  background: var(--eri-surface) !important;
+  border: 1px solid var(--eri-border) !important;
+  border-radius: var(--eri-r-card) !important;
+  box-shadow: var(--eri-shadow-card) !important;
+  overflow: hidden;
+}
+.fi-ta-header {
+  padding: 20px 24px !important;
+  border-bottom: 1px solid var(--eri-border) !important;
+  background: linear-gradient(180deg, var(--eri-surface), var(--eri-surface-2)) !important;
+}
+.fi-ta-table thead th {
+  background: var(--eri-surface-2) !important;
+  font-family: var(--eri-sans) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--eri-text-muted) !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid var(--eri-border) !important;
+}
+.fi-ta-table tbody tr {
+  transition: all 0.12s !important;
+}
+.fi-ta-table tbody tr:hover {
+  background: color-mix(in srgb, var(--eri-accent) 6%, transparent) !important;
+  transform: translateX(2px);
+}
+.fi-ta-table tbody td {
+  padding: 14px 16px !important;
+  border-bottom: 1px solid var(--eri-border) !important;
+  font-size: 13.5px !important;
+}
+
+/* ============================================================
+   BUTTONS — с эффектом нажатия
+   ============================================================ */
+.fi-btn {
+  font-family: var(--eri-sans) !important;
+  font-weight: 500 !important;
+  border-radius: 10px !important;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+.fi-btn:active { transform: scale(0.97); }
+.fi-btn-color-primary,
+.fi-btn[class*="bg-primary"] {
+  background: var(--eri-grad-accent) !important;
+  border: 0 !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(47,109,240,0.3) !important;
+}
+.fi-btn-color-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(47,109,240,0.45) !important;
+}
+.fi-btn-color-danger { background: var(--eri-grad-danger) !important; color: #fff !important; border: 0 !important; }
+.fi-btn-color-success { background: var(--eri-grad-success) !important; color: #fff !important; border: 0 !important; }
+.fi-btn-color-warning { background: var(--eri-grad-warm) !important; color: #fff !important; border: 0 !important; }
+
+/* Ripple-эффект на клик */
+.fi-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s, opacity 0.4s;
+  opacity: 0;
+  pointer-events: none;
+}
+.fi-btn:active::after {
+  width: 200px; height: 200px;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+.fi-badge {
+  border-radius: 999px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  padding: 4px 10px !important;
+}
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+.fi-modal-window {
+  border-radius: var(--eri-r-card) !important;
+  border: 1px solid var(--eri-border) !important;
+  box-shadow: 0 30px 80px rgba(15,20,25,0.22), 0 12px 32px rgba(15,20,25,0.1) !important;
+  background: var(--eri-surface) !important;
+}
+.fi-modal-header { padding: 24px !important; border-bottom: 1px solid var(--eri-border) !important; }
+.fi-modal-heading {
+  font-family: var(--eri-display) !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   TABS
+   ============================================================ */
+.fi-tabs {
+  border-bottom: 1px solid var(--eri-border) !important;
+  background: transparent !important;
+}
+.fi-tabs-tab {
+  font-family: var(--eri-sans) !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  padding: 10px 18px !important;
+  color: var(--eri-text-muted) !important;
+  border-bottom: 2px solid transparent !important;
+  background: transparent !important;
+  margin-bottom: -1px !important;
+  transition: all 0.15s !important;
+}
+.fi-tabs-tab:hover { color: var(--eri-text) !important; }
+.fi-tabs-tab.fi-active,
+.fi-tabs-tab[aria-selected="true"] {
+  color: var(--eri-accent) !important;
+  border-bottom-color: var(--eri-accent) !important;
+  font-weight: 600 !important;
+}
+
+/* ============================================================
+   PAGINATION
+   ============================================================ */
+.fi-pagination button,
+.fi-pagination a {
+  border-radius: 10px !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  min-width: 36px;
+  height: 36px;
+  transition: all 0.15s !important;
+}
+.fi-pagination button:hover,
+.fi-pagination a:hover { transform: translateY(-1px); }
+.fi-pagination button[aria-current="page"],
+.fi-pagination a[aria-current="page"] {
+  background: var(--eri-grad-accent) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  box-shadow: 0 6px 14px rgba(47,109,240,0.35);
+}
+
+/* ============================================================
+   NOTIFICATIONS / TOASTS — glass
+   ============================================================ */
+.fi-no-notification {
+  border-radius: 14px !important;
+  border: 1px solid var(--eri-border) !important;
+  box-shadow: var(--eri-shadow-hover) !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: var(--eri-glass) !important;
+}
+
+/* ============================================================
+   USER MENU (правый верх)
+   ============================================================ */
+.fi-user-menu-trigger {
+  padding: 4px !important;
+  border-radius: 999px !important;
+  border: 2px solid var(--eri-border) !important;
+  transition: all 0.15s !important;
+}
+.fi-user-menu-trigger:hover {
+  border-color: var(--eri-accent) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--eri-accent) 18%, transparent);
+}
+
+/* ============================================================
+   GLOBAL SEARCH (если есть)
+   ============================================================ */
+.fi-global-search {
+  background: var(--eri-surface-2) !important;
+  border: 1px solid var(--eri-border) !important;
+  border-radius: var(--eri-r-pill) !important;
+  padding: 8px 16px !important;
+  transition: all 0.15s !important;
+}
+.fi-global-search:focus-within {
+  background: var(--eri-surface) !important;
+  border-color: var(--eri-accent) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--eri-accent) 18%, transparent) !important;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .fi-topbar nav { padding: 10px 14px !important; }
+  .fi-topbar-nav { gap: 2px !important; }
+  .fi-topbar-nav a, .fi-topbar-nav button { padding: 6px 10px !important; font-size: 12px !important; }
+  .fi-page-heading { font-size: 24px !important; }
+  .fi-section-header { padding: 14px 16px !important; }
+  .fi-section-content { padding: 14px 16px !important; }
+  .fi-wi-stats-overview-stat { padding: 16px 18px !important; }
+  .fi-wi-stats-overview-stat-value { font-size: 26px !important; }
+  .fi-wi-stats-overview-stat .fi-wi-stats-overview-stat-icon {
+    width: 36px; height: 36px; font-size: 16px;
+  }
+}
+
+/* ============================================================
+   ENTRANCE ANIMATIONS
+   ============================================================ */
+@keyframes erFadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fi-section,
+.fi-wi-stats-overview-stat,
+.fi-ta {
+  animation: erFadeUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+.fi-wi-stats-overview > .grid > div:nth-child(1) .fi-wi-stats-overview-stat { animation-delay: 0.05s; }
+.fi-wi-stats-overview > .grid > div:nth-child(2) .fi-wi-stats-overview-stat { animation-delay: 0.10s; }
+.fi-wi-stats-overview > .grid > div:nth-child(3) .fi-wi-stats-overview-stat { animation-delay: 0.15s; }
+.fi-wi-stats-overview > .grid > div:nth-child(4) .fi-wi-stats-overview-stat { animation-delay: 0.20s; }
+.fi-wi-stats-overview > .grid > div:nth-child(5) .fi-wi-stats-overview-stat { animation-delay: 0.25s; }
+.fi-wi-stats-overview > .grid > div:nth-child(6) .fi-wi-stats-overview-stat { animation-delay: 0.30s; }

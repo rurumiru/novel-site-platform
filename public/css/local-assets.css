@@ -1,0 +1,45 @@
+@font-face { font-family: 'Inter'; font-weight: 400; src: url('../fonts/Inter-Regular.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Inter'; font-weight: 700; src: url('../fonts/Inter-Bold.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Lora'; font-weight: 400; src: url('../fonts/Lora-Regular.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; src: url('../fonts/fa-solid-900.woff2') format('woff2'); }
+@font-face { font-family: 'Font Awesome 6 Brands'; font-style: normal; font-weight: 400; src: url('../fonts/fa-brands-400.woff2') format('woff2'); }
+.fa-solid { font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+.fa-brands { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
+
+/* Скрываем скроллбар, но оставляем функционал */
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+}
+::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Для горизонтальных свайперов */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* QUILL EDITOR DARK MODE */
+.dark .ql-toolbar {
+    background-color: #1e293b;
+    border-color: #334155 !important;
+}
+.dark .ql-container {
+    border-color: #334155 !important;
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+.dark .ql-stroke {
+    stroke: #94a3b8 !important;
+}
+.dark .ql-fill {
+    fill: #94a3b8 !important;
+}
+.dark .ql-picker {
+    color: #94a3b8 !important;
+}
+.ql-editor {
+    min-height: 400px;
+    font-size: 16px;
+    line-height: 1.8;
+}
