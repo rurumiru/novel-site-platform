@@ -1,16 +1,17 @@
+
 <div align="center">
 
 # 📚 ER.IIIBA
 
-### ✦ A Platform for Publishing and Reading Online Novels ✦
+### ✦ Platform for publishing and reading online novels ✦
 
-*Author dashboard · chapter reading · forum · reviews · monetization · moderation*
+*Author's dashboard · chapter-by-chapter reading · forum · reviews · monetization · moderation*
 
 <br/>
 
-[![OPEN DEMO](https://img.shields.io/badge/▶_ОТКРЫТЬ_ДЕМО-demo.iiiba.ru-7C3AED?style=for-the-badge&labelColor=0B1020)](https://demo.iiiba.ru)
-[![SUPPORT в Telegram](https://img.shields.io/badge/ПОДДЕРЖКА-Telegram-229ED9?style=for-the-badge&logo=telegram&logoColor=white&labelColor=0B1020)](https://t.me/licht_re)
-[![English README](https://img.shields.io/badge/README-English-2B2B2B?style=for-the-badge&logo=googletranslate&logoColor=white&labelColor=0B1020)](readme_en.md)
+[![Open Demo](https://img.shields.io/badge/▶_OPEN_DEMO-demo.iiiba.ru-7C3AED?style=for-the-badge&labelColor=0B1020)](https://demo.iiiba.ru)
+[![Telegram Support](https://img.shields.io/badge/SUPPORT-Telegram-229ED9?style=for-the-badge&logo=telegram&logoColor=white&labelColor=0B1020)](https://t.me/licht_re)
+[![Russian README](https://img.shields.io/badge/README-Русский-2B2B2B?style=for-the-badge&logo=googletranslate&logoColor=white&labelColor=0B1020)](readme.md)
 
 <br/>
 
@@ -28,29 +29,29 @@
 <br/>
 
 > [!WARNING]
-> ### 🗄️ Archived Project — No Longer Maintained
+> ### 🗄️ Archived Project — No Longer Supported
 >
-> This is the **old source code** that previously powered **er.iiiba.ru**. The production website and project **are no longer operational** — the code is provided **as-is** for reference and educational purposes.
+> This is the **old source code** that previously ran on **er.iiiba.ru**. The production site and project are **no longer functioning** — the code is provided "as-is" for informational purposes.
 >
-> - 🛑 The project is **no longer developed or maintained**
+> - 🛑 The project is **not being developed** and is **not supported**
 > - 🛑 **Bug fixes, issues, and pull requests are not expected**
-> - 🛑 Some integrations (payments, S3, email, external parsers) have been removed or replaced with placeholders
-> - 🔒 All production domains, credentials, and third-party services have been removed and replaced with `localhost`/placeholders
+> - 🛑 Some integrations (payments, S3, mail, external parsers) have been removed or replaced with stubs
+> - 🔒 All production domains, credentials, and third-party services have been stripped and replaced with `localhost`/placeholders
 
 <div align="center">
 
 ### 📑 Navigation
 
-[Features](#-возможности) ·
-[Tech Stack](#-технологический-стек) ·
-[Requirements](#-требования) ·
-[Quick Start](#-быстрый-старт-locally) ·
-[Configuration](#️-конфигурация) ·
-[Что заливать](#-что-заливать-на-сервер) ·
-[Deployment](#-развёртывание-на-сервере-production) ·
-[Demo Environment](#-публичный-демо-стенд) ·
+[Features](#-features) ·
+[Tech Stack](#-tech-stack) ·
+[Requirements](#-requirements) ·
+[Quick Start](#-quick-start-local) ·
+[Configuration](#️-configuration) ·
+[What to Upload](#-what-to-upload-to-the-server) ·
+[Deployment](#-server-deployment-production) ·
+[Demo Stand](#-public-demo-stand) ·
 [API](#-rest-api) ·
-[SUPPORT](#-контакты-и-поддержка)
+[Support](#-contacts-and-support)
 
 </div>
 
@@ -58,32 +59,32 @@
 
 ## ✨ Features
 
-> A complete ecosystem for online novel authors, translators, and readers — from publishing and reading to community features, monetization, and moderation.
+> A complete ecosystem for authors, translators, and readers of online novels — from publishing and reading to community, monetization, and moderation.
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 📖 Reading & Catalog
-- **Novel catalog** — поиск и подборки по жанрам, тегам, статусу, популярности и свежим обновлениям
-- **Ratings & charts** — чарты за день, месяц и всё время + живая лента новых глав
-- **Convenient reader** — чтение по главам с темами оформления (светлая / тёмная / сепия)
-- **Reading progress** — позиция сохраняется автоматически, на любом устройстве
-- **Bookmarks & favorites** — личная библиотека и отметки внутри глав
-- **Age ratings** — аккуратная фильтрация 18+ и скрытие работ от гостей
-- **Book export** — выгрузка произведений для офлайн-чтения
+### 📖 Reading and Catalog
+- **Novel Catalog** — search and collections by genres, tags, status, popularity, and recent updates
+- **Ratings and Tops** — daily, monthly, and all-time charts + live feed of new chapters
+- **Convenient Reader** — chapter-by-chapter reading with themes (light / dark / sepia)
+- **Reading Progress** — position is saved automatically across all devices
+- **Bookmarks and Favorites** — personal library and in-chapter bookmarks
+- **Age Tags** — careful 18+ filtering and hiding mature works from guests
+- **Book Export** — downloading works for offline reading
 
 </td>
 <td width="50%" valign="top">
 
-### ✍️ Authors & Translators
-- **Author dashboard** — создание и оформление новелл: обложка, описание, жанры, теги
-- **Chapter editor** — насыщенный редактор с форматированием и картинками
-- **Volumes & scheduling** — отложенная публикация с автоматическим открытием глав
-- **Chapter import** — массовая загрузка и пакетная обработка
-- **Statistics** — наглядная аналитика просмотров по каждой работе
-- **Team collaboration** — бета-ридеры, редакторы и переводческие команды
-- **Team recruitment** — страницы рекрутинга и заявок
+### ✍️ For Authors and Translators
+- **Author's Dashboard** — creating and designing novels: cover, description, genres, tags
+- **Chapter Editor** — rich text editor with formatting and image support
+- **Volumes and Schedule** — delayed publishing with automatic chapter unlocking
+- **Chapter Import** — mass upload and batch processing
+- **Statistics** — visual analytics of views for each work
+- **Teamwork** — beta readers, editors, and translation teams
+- **Recruitment** — team recruiting and application pages
 
 </td>
 </tr>
@@ -91,47 +92,47 @@
 <td width="50%" valign="top">
 
 ### 💬 Community
-- **Comments** — обсуждения с лайками, рекомендациями и жалобами
-- **Ratings & reviews** — честные топы по голосам читателей
-- **Reviews** — рецензии, анонсы и продвижение с витриной на главной
-- **Forum** — разделы, темы, теги, реакции и подписки
-- **Private messages** — приватная переписка
-- **Profiles & reputation** — аватары, баннеры, бейджи, уровни доверия
-- **Notifications** — оповещения о важных событиях
+- **Comments** — discussions with likes, recommendations, and reports
+- **Ratings and Reviews** — honest tops based on reader votes
+- **Reviews** — critiques, announcements, and promotion with a showcase on the homepage
+- **Forum** — sections, topics, tags, reactions, and subscriptions
+- **Private Messages** — private user-to-user chats
+- **Profiles and Reputation** — avatars, banners, badges, trust levels
+- **Notifications** — alerts for important events
 
 </td>
 <td width="50%" valign="top">
 
 ### 💎 Monetization
-- **Subscriptions** — на отдельные новеллы и авторские бандлы
-- **Paid chapters & balance** — поглавная покупка и разблокировка
-- **Plus subscription** — премиальные тарифы
-- **Promo codes** — гибкие промокампании и бонусы
+- **Subscriptions** — to individual novels and author bundles
+- **Paid Chapters and Balance** — pay-per-chapter purchases and unlocking
+- **Plus Subscription** — premium tiers
+- **Promo Codes** — flexible promo campaigns and bonuses
 
-> *В публичной версии приём платежей и вывод средств отключены — остаются логика и интерфейсы.*
+> *In the public version, payment processing and withdrawals are disabled — only the logic and interfaces remain.*
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### 🛡️ Moderation & Administration
-- **Admin panel** — управление новеллами, главами, пользователями, жанрами, баннерами, тарифами, обзорами и форумом
-- **Approval queues** — модерация контента и заявок
-- **Roles & permissions** — иерархия от владельца до читателя
-- **Trust levels & badges** — репутация за активность
-- **Content moderation** — проверка обложек, описаний, обзоров
+### 🛡️ Moderation and Admin Panel
+- **Admin Panel** — management of novels, chapters, users, genres, banners, plans, reviews, and the forum
+- **Approval Queues** — content and application moderation
+- **Roles and Permissions** — hierarchy from owner to reader
+- **Trust Levels and Badges** — reputation for activity
+- **Content Moderation** — checking covers, descriptions, and reviews
 
 </td>
 <td width="50%" valign="top">
 
-### 🎨 Personalization & Access
-- **Themes** — светлая, тёмная, сепия
-- **Customizable homepage** — пользователь сам компонует блоки
-- **Showcases & banners** — управляемые промо-блоки
-- **Geo restrictions** — доступность контента по регионам
-- **Multi-domain support** — несколько витрин на одной базе
-- **Age verification** — корректная работа с 18+
+### 🎨 Personalization and Access
+- **Themes** — light, dark, sepia
+- **Customizable Homepage** — users can arrange blocks themselves
+- **Showcases and Banners** — manageable promo blocks
+- **Geo-restrictions** — content availability by region
+- **Multi-domain** — multiple storefronts on a single database
+- **Age Verification** — proper handling of 18+ content
 
 </td>
 </tr>
@@ -142,73 +143,70 @@
 
 ---
 
-## 🛠 Technology Stack
+## 🛠 Tech Stack
 
 | Layer | Technology |
 |------|-----------|
 | ⚙️ Backend | PHP 8.2+, Laravel 12 |
 | 🧩 Admin Panel | Filament 3 |
-| ⚡ Interactivity | Livewire |
+| ⚡ Interactive | Livewire |
 | 🎨 Frontend | Tailwind CSS 4, Vite 7, Quill, markdown-it |
-| 🗄️ Database | PostgreSQL (основная) или SQLite (для демо) |
+| 🗄️ Database | PostgreSQL (primary) or SQLite (for demo) |
 | 🚀 Cache / Queues / Sessions | Redis |
-| 📦 File Storage | S3-совместимое (Flysystem) |
-| ✉️ Email | SMTP |
+| 📦 File Storage | S3-compatible (Flysystem) |
+| ✉️ Mail | SMTP |
 
 ---
 
 ## 📦 Requirements
 
-- **PHP 8.2+** с расширениями: `pdo_pgsql` (или `pdo_sqlite`), `mbstring`, `gd`, `intl`, `zip`, `bcmath`, `fileinfo`, `curl`, `openssl`, `redis`
+- **PHP 8.2+** with extensions: `pdo_pgsql` (or `pdo_sqlite`), `mbstring`, `gd`, `intl`, `zip`, `bcmath`, `fileinfo`, `curl`, `openssl`, `redis`
 - **Composer** 2.2+
-- **Node.js** 18+ и npm
-- **PostgreSQL** 14+ *(или SQLite для быстрого демо)*
-- **Redis** 6+ *(опционально)*
-- **S3-совместимое хранилище** *(опционально, для загрузки файлов)*
+- **Node.js** 18+ and npm
+- **PostgreSQL** 14+ *(or SQLite for a quick demo)*
+- **Redis** 6+ *(optional)*
+- **S3-compatible storage** *(optional, for file uploads)*
 
 ---
 
-## 🚀 Quick Start (locally)
+## 🚀 Quick Start (Local)
 
 ```bash
-# 1. Клонировать репозиторий
+# 1. Clone the repository
 git clone <repository-url> shiba
 cd shiba
 
-# 2. Установить зависимости
+# 2. Install dependencies
 composer install
 npm install
 
-# 3. Создать .env и сгенерировать ключ приложения
+# 3. Create .env and generate application key
 cp .env.example .env
 php artisan key:generate
 
-# 4. Указать в .env доступы к БД и Redis (см. ниже)
+# 4. Specify DB and Redis credentials in .env (see below)
 
-# 5. Миграции и базовые сидеры
+# 5. Migrations and basic seeders
 php artisan migrate
 php artisan db:seed
 
-# 6. Символьная ссылка на хранилище
+# 6. Create storage symlink
 php artisan storage:link
 
-# 7. Собрать фронтенд и запустить dev-окружение
+# 7. Build frontend and start dev environment
 npm run build
-composer dev      # сервер + очередь + логи + Vite одной командой
-```
+composer dev      # server + queue + logs + Vite in one command
 
-🌐 Application: **http://localhost:8000** · 🧩 Admin panel: **http://localhost:8000/admin**
+🌐 Application: http://localhost:8000 · 🧩 Admin panel:
+http://localhost:8000/admin
 
-> [!NOTE]
-> This is archived code — running it out of the box without additional environment configuration is not guaranteed.
+[!NOTE] This is archived code — running "out of the box" without environment
+configuration is not guaranteed.
 
----
+⚙️ Configuration
 
-## ⚙️ Configuration
+Main .env variables:
 
-Main variables `.env`:
-
-```dotenv
 APP_NAME=ER.IIIBA
 APP_ENV=production
 APP_DEBUG=false
@@ -222,13 +220,13 @@ DB_DATABASE=laravel
 DB_USERNAME=forge
 DB_PASSWORD=secret
 
-# Redis (кеш / сессии / очереди)
+# Redis (cache / sessions / queues)
 CACHE_STORE=redis
 SESSION_DRIVER=redis
 QUEUE_CONNECTION=redis
 REDIS_HOST=127.0.0.1
 
-# Файловое хранилище (S3-совместимое; необязательно)
+# File storage (S3-compatible; optional)
 FILESYSTEM_DISK=s3
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
@@ -236,74 +234,57 @@ AWS_DEFAULT_REGION=
 AWS_BUCKET=
 AWS_ENDPOINT=
 
-# Почта и демо-режим
+# Mail and demo mode
 MAIL_MAILER=smtp
 DEMO_MODE=false
-```
 
-Complete list — в [.env.example](.env.example).
+Full list is available in .env.example.
 
-> [!TIP]
-> **The simplest option for a demo is SQLite:** no separate database server is required, and Redis can be omitted.
-> ```dotenv
-> DB_CONNECTION=sqlite
-> DB_DATABASE=/var/www/shiba/database/database.sqlite
-> CACHE_STORE=file
-> SESSION_DRIVER=file
-> QUEUE_CONNECTION=sync   # задачи выполняются сразу, воркер не нужен
-> ```
-> ```bash
-> touch database/database.sqlite && php artisan migrate --force
-> ```
+[!TIP] The easiest way for a demo is SQLite: no separate DB server is needed,
+and you can skip Redis.
 
----
+DB_CONNECTION=sqlite
+DB_DATABASE=/var/www/shiba/database/database.sqlite
+CACHE_STORE=file
+SESSION_DRIVER=file
+QUEUE_CONNECTION=sync   # tasks run immediately, no worker needed
 
-## 📤 What to Upload
+touch database/database.sqlite && php artisan migrate --force
 
-The contents of this repository are sufficient. **Upload:**
+📤 What to Upload to the Server
 
-```
+The contents of this repository are sufficient. Upload:
+
 app/  bootstrap/  config/  database/  public/  resources/  routes/  storage/  tests/
 artisan  composer.json  composer.lock  package.json  package-lock.json
 vite.config.js  tailwind.config.js  phpunit.xml
 .env.example  .gitignore  .gitattributes  .editorconfig  .htaccess
-```
 
-**Create these on the server** (не заливать — генерируется командами):
+Created on the server (do not upload — generated by commands):
 
-| Directory / File | Created with |
-|---|---|
-| `vendor/` | `composer install --no-dev --optimize-autoloader` |
-| `node_modules/` | `npm ci` |
-| `public/build/` | `npm run build` *(или соберите locally и залейте)* |
-| `.env` | `cp .env.example .env` + правка |
-| `database/database.sqlite` | `touch` *(при SQLite)* |
-| `storage/**`, `bootstrap/cache/**` | runtime; grant permissions to the web user |
+| Folder / File                      | Created by                                        |
+| ---------------------------------- | ------------------------------------------------- |
+| `vendor/`                          | `composer install --no-dev --optimize-autoloader` |
+| `node_modules/`                    | `npm ci`                                          |
+| `public/build/`                    | `npm run build` *(or build locally and upload)*   |
+| `.env`                             | `cp .env.example .env` + editing                  |
+| `database/database.sqlite`         | `touch` *(if using SQLite)*                       |
+| `storage/**`, `bootstrap/cache/**` | runtime; grant permissions to web user            |
 
-> [!TIP]
-> Don't want to install Node.js on the server — run `npm ci && npm run build` locally и upload the resulting directory `public/build/`.
+[!TIP] If you don't want to install Node on the server, run npm ci && npm run
+build locally and upload the generated public/build/ folder.
 
----
+🌍 Server Deployment (Production)
 
-## 🌍 Deployment на сервере (production)
+1. Server preparation (Ubuntu example)
 
-<details open>
-<summary><b>📋 Step-by-Step Guide (Nginx + PHP-FPM + Redis)</b></summary>
-
-<br/>
-
-**1. Prepare the server (Ubuntu example)**
-
-```bash
 sudo apt update
 sudo apt install -y nginx postgresql redis-server \
   php8.2-fpm php8.2-cli php8.2-pgsql php8.2-redis php8.2-mbstring \
   php8.2-gd php8.2-intl php8.2-zip php8.2-bcmath php8.2-curl php8.2-fileinfo
-```
 
-**2. Application code and dependencies**
+2. Code and dependencies
 
-```bash
 cd /var/www/shiba
 git clone <repository-url> .
 
@@ -312,36 +293,28 @@ npm ci && npm run build
 
 cp .env.example .env
 php artisan key:generate
-# отредактируйте .env: APP_ENV=production, APP_DEBUG=false, доступы к БД/Redis/S3
-```
+# edit .env: APP_ENV=production, APP_DEBUG=false, DB/Redis/S3 credentials
 
-**3. Database**
+3. Database
 
-```bash
 php artisan migrate --force
-php artisan db:seed --force        # базовые справочники (жанры, роли, тарифы)
+php artisan db:seed --force        # basic dictionaries (genres, roles, plans)
 php artisan storage:link
-```
 
-**4. Write permissions**
+4. Write permissions
 
-```bash
 sudo chown -R www-data:www-data storage bootstrap/cache
 sudo chmod -R 775 storage bootstrap/cache
-```
 
-**5. Production caching**
+5. Caching for production
 
-```bash
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 php artisan filament:optimize
-```
 
-**6. Nginx** (`/etc/nginx/sites-available/shiba`) — site root = `public/`
+6. Nginx (/etc/nginx/sites-available/shiba) — site root = public/
 
-```nginx
 server {
     listen 80;
     server_name demo.iiiba.ru;
@@ -362,17 +335,13 @@ server {
 
     location ~ /\.(?!well-known).* { deny all; }
 }
-```
 
-```bash
 sudo ln -s /etc/nginx/sites-available/shiba /etc/nginx/sites-enabled/
 sudo nginx -t && sudo systemctl reload nginx
 sudo certbot --nginx -d demo.iiiba.ru          # HTTPS
-```
 
-**7. Queue** (Supervisor) — not required when using `QUEUE_CONNECTION=sync`
+7. Queue (Supervisor) — not needed if QUEUE_CONNECTION=sync
 
-```ini
 [program:shiba-worker]
 command=php /var/www/shiba/artisan queue:work --sleep=3 --tries=3 --max-time=3600
 autostart=true
@@ -380,122 +349,102 @@ autorestart=true
 user=www-data
 numprocs=2
 stopwaitsecs=3600
-```
 
-**8. Scheduler** (cron) — `crontab -e`
+8. Scheduler (cron) — crontab -e
 
-```cron
 * * * * * cd /var/www/shiba && php artisan schedule:run >> /dev/null 2>&1
-```
 
-</details>
+[!TIP] Having trouble with deployment? Write to me on Telegram — @licht_re.
 
-> [!TIP]
-> Having trouble with deployment? Напишите в Telegram — **[@licht_re](https://t.me/licht_re)**.
+🧪 Public Demo Stand
 
----
+The project can run in a self-cleaning demo mode: visitors can freely test the
+site and admin panel, and the stand automatically reverts to its baseline state.
 
-## 🧪 Public Demo Environment
-
-Проект умеет работать в режиме **самоочищающегося демо**: посетители свободно тестируют сайт и админку, а стенд автоматически возвращается к эталонному состоянию.
-
-```
 ╭──────────────────────────────────────────────────────────────╮
-│  ✅ Эталон (is_demo = true)  →  сохраняется всегда             │
-│     • демо-аккаунты (админ, модератор, автор, читатели)        │
-│     • демо-новеллы, тома, главы, обзоры                        │
+│  ✅ Baseline (is_demo = true)  →  always preserved             │
+│     • demo accounts (admin, moderator, author, readers)        │
+│     • demo novels, volumes, chapters, reviews                  │
 ├──────────────────────────────────────────────────────────────┤
-│  🗑️ Контент посетителей (is_demo = false)  →  удаляется        │
-│     • новеллы / тома / главы / обзоры                          │
-│     • комментарии, оценки, избранное, закладки                 │
-│     • форум, личные сообщения, уведомления                     │
-│     • аккаунты посетителей (кроме staff)                       │
-│          ⟳  автоматически раз в 15 минут                       │
+│  🗑️ Visitor Content (is_demo = false)  →  deleted              │
+│     • novels / volumes / chapters / reviews                    │
+│     • comments, ratings, favorites, bookmarks                  │
+│     • forum, private messages, notifications                   │
+│     • visitor accounts (except staff)                          │
+│          ⟳  automatically every 15 minutes                     │
 ╰──────────────────────────────────────────────────────────────╯
-```
 
-**Deployment демо-стенда:**
+Deploying the demo stand:
 
-```bash
-# 1) в .env: DEMO_MODE=true
-# 2) залить эталонные данные
+# 1) in .env: DEMO_MODE=true
+# 2) seed baseline data
 php artisan migrate --force
-php artisan db:seed --force                    # справочники
-php artisan db:seed --class=DemoSeeder         # демо-аккаунты, новеллы, главы, обзоры
-# 3) зафиксировать эталон
+php artisan db:seed --force                    # dictionaries
+php artisan db:seed --class=DemoSeeder         # demo accounts, novels, chapters, reviews
+# 3) snapshot the baseline
 php artisan demo:snapshot
-# 4) cron schedule:run сам запустит очистку каждые 15 минут
+# 4) cron schedule:run will automatically trigger cleanup every 15 minutes
 
-# ручной сброс в любой момент:
+# manual reset at any time:
 php artisan demo:cleanup --force
-```
 
-### 🔑 Demo Credentials
+🔑 Demo Access
 
-| Role | E-mail | Login | Password |
-|------|--------|-------|--------|
-| 👑 Owner/Admin | `admin@demo.iiiba.ru` | `demo_admin` | `demo12345` |
-| 🛡️ Moderator | `moderator@demo.iiiba.ru` | `demo_mod` | `demo12345` |
-| ✍️ Author | `author@demo.iiiba.ru` | `demo_author` | `demo12345` |
-| 📖 Reader | `reader@demo.iiiba.ru` | `demo_reader` | `demo12345` |
-| 📖 Reader 2 | `reader2@demo.iiiba.ru` | `demo_reader2` | `demo12345` |
+| Role          | E-mail                    | Login          | Password    |
+| ------------- | ------------------------- | -------------- | ----------- |
+| 👑 Owner/Admin | `admin@demo.iiiba.ru`     | `demo_admin`   | `demo12345` |
+| 🛡️ Moderator  | `moderator@demo.iiiba.ru` | `demo_mod`     | `demo12345` |
+| ✍️ Author     | `author@demo.iiiba.ru`    | `demo_author`  | `demo12345` |
+| 📖 Reader      | `reader@demo.iiiba.ru`    | `demo_reader`  | `demo12345` |
+| 📖 Reader 2    | `reader2@demo.iiiba.ru`   | `demo_reader2` | `demo12345` |
 
-Войти можно по e-mail **или** по логину (в одно поле). Admin panel — `/admin`. Credentials can be changed using `DEMO_ADMIN_EMAIL` / `DEMO_ADMIN_PASSWORD`.
+You can log in using e-mail or login (in the same field). Admin panel — /admin.
+Credentials can be changed via DEMO_ADMIN_EMAIL / DEMO_ADMIN_PASSWORD.
 
-### Demo Mode Commands
+Demo Mode Commands
 
-| Команда | Purpose |
-|---------|-----------|
-| `php artisan db:seed --class=DemoSeeder` | create the reference demo data |
-| `php artisan demo:snapshot` | mark the current content as the reference state |
-| `php artisan demo:snapshot --users` | additionally mark all users as demo users |
-| `php artisan demo:cleanup --force` | immediately reset the environment to the reference state |
+| Command                                  | Purpose                                 |
+| ---------------------------------------- | --------------------------------------- |
+| `php artisan db:seed --class=DemoSeeder` | create baseline demo data               |
+| `php artisan demo:snapshot`              | mark current content as baseline        |
+| `php artisan demo:snapshot --users`      | additionally mark all users as demo     |
+| `php artisan demo:cleanup --force`       | immediately reset the stand to baseline |
 
-The lists of tables to be cleaned/protected — в [config/demo.php](config/demo.php).
+Lists of cleaned/protected tables are in config/demo.php.
 
-> [!CAUTION]
-> **`DEMO_MODE=true` enable only in an isolated demo environment.** On a server containing real data, cleanup will permanently delete all non-demo content. The mode is disabled by default, а команда защищена флагом `--force`.
+[!CAUTION] Enable DEMO_MODE=true only on an isolated demo environment. On a
+server with real data, the cleanup will permanently delete all non-demo content.
+By default, the mode is disabled, and the command is protected by the --force
+flag.
 
----
+⏱ Task Scheduler
 
-## ⏱ Scheduler задач
+Regular tasks are located in routes/console.php:
 
-Scheduled tasks — в [routes/console.php](routes/console.php):
+| Command                    | Schedule         | Purpose                                       |
+| -------------------------- | ---------------- | --------------------------------------------- |
+| `auth:clear-resets`        | every 15 minutes | clear expired password reset tokens           |
+| `app:auto-unlock-chapters` | daily at 06:00   | automatically unlock scheduled chapters       |
+| `eriiba:recalc-trust`      | daily at 03:30   | recalculate user trust levels                 |
+| `demo:cleanup`             | every 15 minutes | reset demo stand *(only if `DEMO_MODE=true`)* |
 
-| Команда | Schedule | Purpose |
-|---------|-----------|-----------|
-| `auth:clear-resets` | every 15 minutes | remove expired password reset tokens |
-| `app:auto-unlock-chapters` | ежедневно 06:00 | automatically unlock chapters |
-| `eriiba:recalc-trust` | ежедневно 03:30 | recalculate trust levels |
-| `demo:cleanup` | every 15 minutes | reset the demo environment *(only when `DEMO_MODE=true`)* |
+🔌 REST API
 
----
+A public REST API is available under the /api/v1 prefix — novels, chapters,
+authors, search. Details are in routes/api.php.
 
-## 🔌 REST API
+💬 Contacts and Support
 
-Public REST API is available under the prefix `/api/v1` — novels, chapters, authors, and search. Details — в [routes/api.php](routes/api.php).
+The project is archived and not officially supported, but if you have questions
+about deployment, you can always reach out:
 
----
+Write on Telegram Open Demo
 
-<div align="center">
+📄 License
 
-## 💬 Contact & Support
+The Laravel framework is open-sourced software licensed under the MIT license.
+The application code is provided "as-is" for informational purposes; source code
+rights belong to the author.
 
-The project is archived and officially unsupported, but deployment-related questions can still be sent to:
-
-[![Написать в Telegram](https://img.shields.io/badge/НАПИСАТЬ_В_TELEGRAM-@licht__re-229ED9?style=for-the-badge&logo=telegram&logoColor=white&labelColor=0B1020)](https://t.me/licht_re)
-[![OPEN DEMO](https://img.shields.io/badge/ОТКРЫТЬ_ДЕМО-demo.iiiba.ru-7C3AED?style=for-the-badge&labelColor=0B1020)](https://demo.iiiba.ru)
-
-</div>
-
----
-
-## 📄 License
-
-The Laravel framework is distributed under the [MIT](https://opensource.org/licenses/MIT). The application code is provided "as-is" for reference and educational purposes; the rights to the source code belong to its author.
-
-> 🇷🇺 The project's interface, content, and documentation are **entirely in Russian**. English version: **[readme_en.md](readme_en.md)**.
-
-<div align="center">
-<sub>Made with ❤️ for the online novel community · archived er.iiiba.ru project</sub>
-</div>
+🇷🇺 The interface, content, and documentation of the project are fully in
+Russian. Russian version: readme.md.
