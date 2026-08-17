@@ -196,6 +196,7 @@ php artisan storage:link
 # 7. Build frontend and start dev environment
 npm run build
 composer dev      # server + queue + logs + Vite in one command
+```
 
 ## 🌐 Application: http://localhost:8000 · 🧩 Admin panel:
 http://localhost:8000/admin
